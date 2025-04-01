@@ -20,7 +20,7 @@ function App() {
   return (
     <>
       <h2 className="section" onClick={changeVisibility}>
-        DETAILS {isOpen ? <>↓</> : <>↑</>}
+        DETAILS {!isOpen ? <>↓</> : <>↑</>}
       </h2>
       <div className={className}>
         <p>
