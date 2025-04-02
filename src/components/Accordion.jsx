@@ -1,11 +1,11 @@
 import "./Accordion.css";
 
 function useAccordion(accordionLogic) {
-  const { display, setDisplay, closeAllAccordions } = accordionLogic;
+  const { display, setDisplay, closeAll } = accordionLogic;
 
   function changeVisibility() {
     if (!display) {
-      closeAllAccordions();
+      closeAll();
     }
     setDisplay(!display);
   }

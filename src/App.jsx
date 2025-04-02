@@ -12,7 +12,7 @@ function App() {
   const [displayContact, setDisplayContact] = useState(false);
   const [displayEnd, setDisplayEnd] = useState(false);
 
-  function closeAllAccordions() {
+  function closeAll() {
     const accordions = [
       [displayDetails, setDisplayDetails],
       [displayAbout, setDisplayAbout],
@@ -35,19 +35,19 @@ function App() {
     <>
       <Accordion
         accordionData={{ title: "DETAILS", content: CONTENT }}
-        accordionLogic={{ closeAllAccordions, display: displayDetails, setDisplay: setDisplayDetails }}
+        accordionLogic={{ closeAll, display: displayDetails, setDisplay: setDisplayDetails }}
       />
       <Accordion
         accordionData={{ title: "ABOUT US", content: CONTENT }}
-        accordionLogic={{ closeAllAccordions, display: displayAbout, setDisplay: setDisplayAbout }}
+        accordionLogic={{ closeAll, display: displayAbout, setDisplay: setDisplayAbout }}
       />
       <Accordion
         accordionData={{ title: "CONTACT", content: CONTENT }}
-        accordionLogic={{ closeAllAccordions, display: displayContact, setDisplay: setDisplayContact }}
+        accordionLogic={{ closeAll, display: displayContact, setDisplay: setDisplayContact }}
       />
       <Accordion
         accordionData={{ title: "END", content: CONTENT }}
-        accordionLogic={{ closeAllAccordions, display: displayEnd, setDisplay: setDisplayEnd }}
+        accordionLogic={{ closeAll, display: displayEnd, setDisplay: setDisplayEnd }}
       />
     </>
   );
