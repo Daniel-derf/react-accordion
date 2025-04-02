@@ -13,11 +13,11 @@ function useAccordion(accordionLogic) {
   const className = `details ${display ? "open" : ""}`;
   const arrow = !display ? <>↓</> : <>↑</>;
 
-  return { display, changeVisibility, className, arrow };
+  return { changeVisibility, className, arrow };
 }
 
 function Accordion({ accordionData, accordionLogic }) {
-  const { display, changeVisibility, className, arrow } = useAccordion(accordionLogic);
+  const { changeVisibility, className, arrow } = useAccordion(accordionLogic);
 
   return (
     <>
