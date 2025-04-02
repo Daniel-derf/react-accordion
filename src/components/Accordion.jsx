@@ -16,12 +16,12 @@ function useAccordion(accordionLogic) {
 }
 
 function Accordion({ accordionData, accordionLogic }) {
-  const { isOpen, changeVisibility, className } = useAccordion(accordionLogic);
+  const { display, changeVisibility, className } = useAccordion(accordionLogic);
 
   return (
     <>
       <h2 className="section" onClick={changeVisibility}>
-        {accordionData.title} {!isOpen ? <>↓</> : <>↑</>}
+        {accordionData.title} {!display ? <>↓</> : <>↑</>}
       </h2>
       <div className={className}>
         <p>{accordionData.content}</p>
