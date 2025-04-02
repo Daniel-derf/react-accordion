@@ -2,20 +2,21 @@ import { useState } from "react";
 
 import "./Accordion.css";
 
-function useAccordion() {
-  const [isOpen, setIsOpen] = useState(false);
-
+function useAccordion({ display, setDisplay, closeAllAccordions }) {
   function changeVisibility() {
-    setIsOpen(!isOpen);
+    if (!display) {
+      closeAllAccordions();
+    }
+    setDisplay(!display);
   }
 
-  const className = `details ${isOpen ? "open" : ""}`;
+  const className = `details ${display ? "open" : ""}`;
 
-  return { isOpen, changeVisibility, className };
+  return { display, changeVisibility, className };
 }
 
-function Accordion({ title, content }) {
-  const { isOpen, changeVisibility, className } = useAccordion();
+function Accordion({ title, content, closeAllAccordions, display, setDisplay }) {
+  const { isOpen, changeVisibility, className } = useAccordion({ closeAllAccordions, display, setDisplay });
 
   return (
     <>
