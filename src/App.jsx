@@ -34,29 +34,25 @@ function App() {
   return (
     <>
       <Accordion
-        title="DETAILS"
-        content={CONTENT}
+        accordionData={{ title: "DETAILS", content: CONTENT }}
         closeAllAccordions={closeAllAccordions}
         display={displayDetails}
         setDisplay={setDisplayDetails}
       />
       <Accordion
-        title="ABOUT US"
-        content={CONTENT}
+        accordionData={{ title: "ABOUT US", content: CONTENT }}
         closeAllAccordions={closeAllAccordions}
         display={displayAbout}
         setDisplay={setDisplayAbout}
       />
       <Accordion
-        title="CONTACT"
-        content={CONTENT}
+        accordionData={{ title: "CONTACT", content: CONTENT }}
         closeAllAccordions={closeAllAccordions}
         display={displayContact}
         setDisplay={setDisplayContact}
       />
       <Accordion
-        title="END"
-        content={CONTENT}
+        accordionData={{ title: "END", content: CONTENT }}
         closeAllAccordions={closeAllAccordions}
         display={displayEnd}
         setDisplay={setDisplayEnd}

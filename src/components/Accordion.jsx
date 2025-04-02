@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import "./Accordion.css";
 
 function useAccordion({ display, setDisplay, closeAllAccordions }) {
@@ -15,16 +13,16 @@ function useAccordion({ display, setDisplay, closeAllAccordions }) {
   return { display, changeVisibility, className };
 }
 
-function Accordion({ title, content, closeAllAccordions, display, setDisplay }) {
+function Accordion({ accordionData, closeAllAccordions, display, setDisplay }) {
   const { isOpen, changeVisibility, className } = useAccordion({ closeAllAccordions, display, setDisplay });
 
   return (
     <>
       <h2 className="section" onClick={changeVisibility}>
-        {title} {!isOpen ? <>↓</> : <>↑</>}
+        {accordionData.title} {!isOpen ? <>↓</> : <>↑</>}
       </h2>
       <div className={className}>
-        <p>{content}</p>
+        <p>{accordionData.content}</p>
       </div>
     </>
   );
