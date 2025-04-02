@@ -1,7 +1,11 @@
+import { CloseAllContext } from "../App";
 import "./Accordion.css";
+import { useContext } from "react";
 
 function useAccordion(accordionLogic) {
-  const { display, setDisplay, closeAll } = accordionLogic;
+  const closeAll = useContext(CloseAllContext);
+
+  const { display, setDisplay } = accordionLogic;
 
   const changeVisibility = () => {
     if (!display) {
