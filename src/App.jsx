@@ -31,49 +31,48 @@ function useHandleAccordions() {
     }
   }
 
+  const displayTypes = {
+    details: [displayDetails, setDisplayDetails],
+    about: [displayAbout, setDisplayAbout],
+    contact: [displayContact, setDisplayContact],
+    end: [displayEnd, setDisplayEnd],
+  };
+
+  function getDisplay(type) {
+    return displayTypes[type][0];
+  }
+
+  function getDisplaySetter(type) {
+    return displayTypes[type][1];
+  }
+
   return {
-    displayDetails,
-    setDisplayDetails,
-    displayAbout,
-    setDisplayAbout,
-    displayContact,
-    setDisplayContact,
-    displayEnd,
-    setDisplayEnd,
+    getDisplay,
+    getDisplaySetter,
     closeAll,
   };
 }
 
 function App() {
-  const {
-    displayDetails,
-    displayAbout,
-    displayContact,
-    displayEnd,
-    setDisplayDetails,
-    setDisplayAbout,
-    setDisplayContact,
-    setDisplayEnd,
-    closeAll,
-  } = useHandleAccordions();
+  const { getDisplay, getDisplaySetter, closeAll } = useHandleAccordions();
 
   return (
     <>
       <Accordion
         accordionData={{ title: "DETAILS", content: CONTENT }}
-        accordionLogic={{ closeAll, display: displayDetails, setDisplay: setDisplayDetails }}
+        accordionLogic={{ closeAll, display: getDisplay("details"), setDisplay: getDisplaySetter("details") }}
       />
       <Accordion
         accordionData={{ title: "ABOUT US", content: CONTENT }}
-        accordionLogic={{ closeAll, display: displayAbout, setDisplay: setDisplayAbout }}
+        accordionLogic={{ closeAll, display: getDisplay("about"), setDisplay: getDisplaySetter("about") }}
       />
       <Accordion
         accordionData={{ title: "CONTACT", content: CONTENT }}
-        accordionLogic={{ closeAll, display: displayContact, setDisplay: setDisplayContact }}
+        accordionLogic={{ closeAll, display: getDisplay("contact"), setDisplay: getDisplaySetter("contact") }}
       />
       <Accordion
         accordionData={{ title: "END", content: CONTENT }}
-        accordionLogic={{ closeAll, display: displayEnd, setDisplay: setDisplayEnd }}
+        accordionLogic={{ closeAll, display: getDisplay("end"), setDisplay: getDisplaySetter("end") }}
       />
     </>
   );
