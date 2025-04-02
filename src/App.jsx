@@ -9,47 +9,29 @@ const CONTENT = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc n
 export const CloseAllContext = createContext();
 
 function useHandleAccordions() {
-  const [displayDetails, setDisplayDetails] = useState(false);
-  const [displayAbout, setDisplayAbout] = useState(false);
-  const [displayContact, setDisplayContact] = useState(false);
-  const [displayEnd, setDisplayEnd] = useState(false);
-
-  function closeAll() {
-    const accordions = [
-      [displayDetails, setDisplayDetails],
-      [displayAbout, setDisplayAbout],
-      [displayContact, setDisplayContact],
-      [displayEnd, setDisplayEnd],
-    ];
-
-    for (const accordion of accordions) {
-      const isActive = accordion[0];
-
-      if (isActive) {
-        const accordionSetter = accordion[1];
-
-        accordionSetter(false);
-      }
-    }
-  }
-
-  const CloseAllProvider = ({ children }) => {
-    return <CloseAllContext.Provider value={{ closeAll }}>{children}</CloseAllContext.Provider>;
+  const defaultAccordions = {
+    details: false,
+    about: false,
+    contact: false,
+    end: false,
   };
 
-  const displayTypes = {
-    details: [displayDetails, setDisplayDetails],
-    about: [displayAbout, setDisplayAbout],
-    contact: [displayContact, setDisplayContact],
-    end: [displayEnd, setDisplayEnd],
-  };
+  const [display, setDisplay] = useState(defaultAccordions);
 
   function getDisplay(type) {
-    return displayTypes[type][0];
+    return display[type];
   }
 
   function getDisplaySetter(type) {
-    return displayTypes[type][1];
+    return (value) => {
+      setDisplay((prevDisplay) => {
+        return { ...prevDisplay, [type]: value };
+      });
+    };
+  }
+
+  function closeAll() {
+    setDisplay(defaultAccordions);
   }
 
   return {
@@ -63,7 +45,7 @@ function App() {
   const { getDisplay, getDisplaySetter, CloseAllProvider } = useHandleAccordions();
 
   return (
-    <CloseAllProvider>
+    <CloseAllContext.Provider value={closeAll}>
       <Accordion
         accordionData={{ title: "DETAILS", content: CONTENT }}
         accordionLogic={{ display: getDisplay("details"), setDisplay: getDisplaySetter("details") }}
@@ -80,7 +62,7 @@ function App() {
         accordionData={{ title: "END", content: CONTENT }}
         accordionLogic={{ display: getDisplay("end"), setDisplay: getDisplaySetter("end") }}
       />
-    </CloseAllProvider>
+    </CloseAllContext.Provider>
   );
 }
 
