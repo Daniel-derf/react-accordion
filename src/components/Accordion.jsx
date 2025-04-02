@@ -3,12 +3,12 @@ import "./Accordion.css";
 function useAccordion(accordionLogic) {
   const { display, setDisplay, closeAll } = accordionLogic;
 
-  function changeVisibility() {
+  const changeVisibility = () => {
     if (!display) {
       closeAll();
     }
     setDisplay(!display);
-  }
+  };
 
   const className = `details ${display ? "open" : ""}`;
   const arrow = !display ? <>↓</> : <>↑</>;
