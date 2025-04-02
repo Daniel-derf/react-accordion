@@ -37,12 +37,12 @@ function useHandleAccordions() {
   return {
     getDisplay,
     getDisplaySetter,
-    CloseAllProvider,
+    closeAll,
   };
 }
 
 function App() {
-  const { getDisplay, getDisplaySetter, CloseAllProvider } = useHandleAccordions();
+  const { getDisplay, getDisplaySetter, closeAll } = useHandleAccordions();
 
   return (
     <CloseAllContext.Provider value={closeAll}>
