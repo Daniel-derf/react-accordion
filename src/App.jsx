@@ -9,12 +9,14 @@ const CONTENT = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc n
 export const CloseAllContext = createContext();
 
 function useHandleAccordions() {
-  const [display, setDisplay] = useState({
+  const defaultAccordions = {
     details: false,
     about: false,
     contact: false,
     end: false,
-  });
+  };
+
+  const [display, setDisplay] = useState(defaultAccordions);
 
   function getDisplay(type) {
     return display[type];
@@ -29,11 +31,7 @@ function useHandleAccordions() {
   }
 
   function closeAll() {
-    for (const type in display) {
-      setDisplay((prevDisplay) => {
-        return { ...prevDisplay, [type]: false };
-      });
-    }
+    setDisplay(defaultAccordions);
   }
 
   return {
