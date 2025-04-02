@@ -8,14 +8,7 @@ const CONTENT = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc n
 
 export const CloseAllContext = createContext();
 
-function useHandleAccordions() {
-  const defaultAccordions = {
-    details: false,
-    about: false,
-    contact: false,
-    end: false,
-  };
-
+function useHandleAccordions(defaultAccordions) {
   const [display, setDisplay] = useState(defaultAccordions);
 
   function getDisplay(type) {
@@ -42,7 +35,14 @@ function useHandleAccordions() {
 }
 
 function App() {
-  const { getDisplay, getDisplaySetter, closeAll } = useHandleAccordions();
+  const defaultAccordions = {
+    details: false,
+    about: false,
+    contact: false,
+    end: false,
+  };
+
+  const { getDisplay, getDisplaySetter, closeAll } = useHandleAccordions(defaultAccordions);
 
   return (
     <CloseAllContext.Provider value={closeAll}>
