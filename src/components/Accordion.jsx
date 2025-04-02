@@ -1,6 +1,8 @@
 import "./Accordion.css";
 
-function useAccordion({ display, setDisplay, closeAllAccordions }) {
+function useAccordion(accordionLogic) {
+  const { display, setDisplay, closeAllAccordions } = accordionLogic;
+
   function changeVisibility() {
     if (!display) {
       closeAllAccordions();
@@ -13,8 +15,8 @@ function useAccordion({ display, setDisplay, closeAllAccordions }) {
   return { display, changeVisibility, className };
 }
 
-function Accordion({ accordionData, closeAllAccordions, display, setDisplay }) {
-  const { isOpen, changeVisibility, className } = useAccordion({ closeAllAccordions, display, setDisplay });
+function Accordion({ accordionData, accordionLogic }) {
+  const { isOpen, changeVisibility, className } = useAccordion(accordionLogic);
 
   return (
     <>

@@ -35,27 +35,19 @@ function App() {
     <>
       <Accordion
         accordionData={{ title: "DETAILS", content: CONTENT }}
-        closeAllAccordions={closeAllAccordions}
-        display={displayDetails}
-        setDisplay={setDisplayDetails}
+        accordionLogic={{ closeAllAccordions, display: displayDetails, setDisplay: setDisplayDetails }}
       />
       <Accordion
         accordionData={{ title: "ABOUT US", content: CONTENT }}
-        closeAllAccordions={closeAllAccordions}
-        display={displayAbout}
-        setDisplay={setDisplayAbout}
+        accordionLogic={{ closeAllAccordions, display: displayAbout, setDisplay: setDisplayAbout }}
       />
       <Accordion
         accordionData={{ title: "CONTACT", content: CONTENT }}
-        closeAllAccordions={closeAllAccordions}
-        display={displayContact}
-        setDisplay={setDisplayContact}
+        accordionLogic={{ closeAllAccordions, display: displayContact, setDisplay: setDisplayContact }}
       />
       <Accordion
         accordionData={{ title: "END", content: CONTENT }}
-        closeAllAccordions={closeAllAccordions}
-        display={displayEnd}
-        setDisplay={setDisplayEnd}
+        accordionLogic={{ closeAllAccordions, display: displayEnd, setDisplay: setDisplayEnd }}
       />
     </>
   );
